@@ -1,29 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <% if @character %>
+    <img src= <%= @character['img']%> >
+    <h2><%= @character['name'] %></h2>
+    <h3>Ocupaciones:</h3>
+    <% if @character['occupation'].length() > 0 %>
+      <% @character['occupation'].each do |ocup| %>
+        <p><%= ocup %></p>
+      <% end %>
+    <% else %>
+      </p>No se registran occupaciones para este personaje</p>
+    <% end %>
+    <p>Estado: <%= @character['status'] %></p>
+    <p>Apodo: <%= @character['nickname'] %></p>
+    <p>Interpretado por: <%= @character['portrayed'] %></p>
+    <% if @character['category'] == "Breaking Bad" %>
+      <a href="/breaking"><p>Serie de origen: Breaking Bad</p></a>
 
-<p>
-  <strong>Name:</strong>
-  <%= @character.name %>
-</p>
+    <% else %>
+      <a href="/better"><p>Serie de origen: Better Call Saul</p></a>
+      <p>Temporadas en las que aparece</p>
+    <% end %>
+    <h3>Temporadas de Breaking Bad en las que aparece</h3>
+    <% if @character['appearance'].length() > 0 %>
+      <% @character['appearance'].each do |ap| %>
+        <a href="/breaking/<%= ap %>"><p>Temporada - <%= ap %></p></a>
+      <%end%>
+    <% else %>
+      <p>Este personaje no ha aparecido en Breaking Bad </p>
+    <% end %>
+    <h3>Temporadas de Better Call Saul en las que aparece</p>
+    <% if @character['better_call_saul_appearance'].length() > 0 %>
+      <%  @character['better_call_saul_appearance'].each do |ap| %>
+        <a href="/better/<%= ap %>"><p>Temporada - <%= ap %></p></a>
+      <%end%>
+    <% else %>
+      <p>Este personaje no ha aparecido en Better Call Saul</p>
+    <% end %>
 
-<p>
-  <strong>Img:</strong>
-  <%= @character.img %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @character.status %>
-</p>
-
-<p>
-  <strong>Nickname:</strong>
-  <%= @character.nickname %>
-</p>
-
-<p>
-  <strong>Portrayed:</strong>
-  <%= @character.portrayed %>
-</p>
-
-<%= link_to 'Edit', edit_character_path(@character) %> |
-<%= link_to 'Back', characters_path %>
+    <% if @quotes.length() > 0 %>
+      <h3>Frases:</h3>
+      <% @quotes.each do |quote| %>
+        <p><%= quote['quote'] %></p>
+      <% end %>
+    <% else %>
+      <p>No se registran frases de este personaje</p>
+    <% end %>
+  <% else %>
+    <p>Este personaje no está disponible</p>
+  <% end %> 
+  
+</div>

@@ -1,2 +1,11 @@
-<h1>Breaking#show</h1>
-<p>Find me in app/views/breaking/show.html.erb</p>
+<div class="container">
+  <a href="/breaking"><h1>Breaking Bad</h1></a>
+  <h2>Temporada <%= @id_ %></h2>
+  <p>Esta temporada cuenta con <%= @counter %> episodios disponibles</p>
+  <% if @counter > 0 %>
+    <% @episodes.each do |episode| %>
+      <p><a href="/episodes/<%= episode['episode_id'] %>"><%= episode['episode'] %> - <%= episode['title']%></a></p>
+    <% end %>
+  <% end %>
+</div>
+

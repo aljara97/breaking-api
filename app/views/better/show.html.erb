@@ -1,2 +1,11 @@
-<h1>Better#show</h1>
-<p>Find me in app/views/better/show.html.erb</p>
+<div class="container">
+  <a href="/better"><h1>Better Call Saul</h1></a>
+  <h2>Temporada <%= @id_ %></h2>
+  <p>Esta temporada cuenta con <%= @counter %> episodios disponibles</p>
+  <% if @counter > 0 %>
+    <% @episodes.each do |episode| %>
+      <p><a href="/episodes/<%= episode['episode_id'] %>"><%= episode['episode'] %> - <%= episode['title']%></a></p>
+    <% end %>
+  <% end %>
+</div>
+
