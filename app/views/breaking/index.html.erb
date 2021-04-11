@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Breaking Bad</h1>
+  <p>Temporadas: <%= @mayor %></p>
+  <% @seasons.each do |season| %>
+    <p><a href="/breaking/<%= season %>">Temporada número <%= season %></a></p>
+  <% end %> 
+</div>

@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Better Call Saul</h1>
+  <p>Temporadas: <%= @mayor %></p>
+  <% @seasons.each do |season| %>
+    <p><a href="/better/<%= season %>">Temporada <%= season %></a></p>
+  <% end %> 
+</div>
