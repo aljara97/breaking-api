@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Búsqueda de personajes</h1>
+  <h2>Se han encontrado <%= @characters.length() %> resultados para <%= @keyword %></h2>
+  <% if @characters.length() > 0 %>
+    <% @characters.each do |chara| %>
+      <a href="/characters/<%= chara['char_id'] %>"><p><%= chara['name'] %></p></a>
+    <%end%>
+  <%end%>
+</div>

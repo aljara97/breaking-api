@@ -4,12 +4,24 @@
     <title>BreakingProject</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= form_tag("/search", options = {}) do %>
+      <div class="input-group">
+        <%= text_field_tag("keyword", value = nil, options={class:"input-group-append", placeholder:"Ingresa un personaje"}) %>
+        <div class="input-group-append">
+          <%= submit_tag(value = "Buscar", options = { class: "btn btn-primary" }) do %>
+            <i class="fas fa-search fa-sm"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
+  
 </html>
