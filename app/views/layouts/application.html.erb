@@ -4,24 +4,50 @@
     <title>BreakingProject</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">  
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= form_tag("/search", options = {}) do %>
-      <div class="input-group">
-        <%= text_field_tag("keyword", value = nil, options={class:"input-group-append", placeholder:"Ingresa un personaje"}) %>
-        <div class="input-group-append">
-          <%= submit_tag(value = "Buscar", options = { class: "btn btn-primary" }) do %>
-            <i class="fas fa-search fa-sm"></i>
-          <% end %>
-        </div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <strong><h2><i class="fas fa-vial"></i> Breaking-Api</h2></strong>
+      </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a href="/breaking" class="navbar-item">
+        Breaking Bad
+      </a>
+      <a href="/better" class="navbar-item">
+        Better Call Saul
+      </a>
+
+    </div>
+
+    <div class="navbar-end">
+      
+      <div class="navbar-item">
+        <%= form_tag("/search", options = {}) do %>
+          <div class="buttons">
+            <div>
+              <%= text_field_tag("keyword", value = nil, options={class:"input-group-append", placeholder:"Ingresa un personaje"}) %>
+            </div>
+            <div>
+              <%= submit_tag(value = "Buscar", options = { class: "button" }) do %>
+                <i class="fas fa-search fa-sm"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <%= yield %>
+  </div>
+</nav>
+  <%=yield%>
   </body>
   
 </html>

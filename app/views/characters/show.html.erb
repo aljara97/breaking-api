@@ -2,7 +2,7 @@
   <% if @character %>
     <img src= <%= @character['img']%> >
     <h2><%= @character['name'] %></h2>
-    <h3>Ocupaciones:</h3>
+    <h3><i class="fas fa-briefcase"></i> Ocupaciones:</h3>
     <% if @character['occupation'].length() > 0 %>
       <% @character['occupation'].each do |ocup| %>
         <p><%= ocup %></p>
@@ -10,17 +10,16 @@
     <% else %>
       </p>No se registran occupaciones para este personaje</p>
     <% end %>
-    <p>Estado: <%= @character['status'] %></p>
-    <p>Apodo: <%= @character['nickname'] %></p>
-    <p>Interpretado por: <%= @character['portrayed'] %></p>
+    <p><i class="fas fa-user-check"></i> Estado: <%= @character['status'] %></p>
+    <p><i class="fas fa-file-signature"></i> Apodo: <%= @character['nickname'] %></p>
+    <p><i class="fas fa-film"></i> Interpretado por: <%= @character['portrayed'] %></p>
     <% if @character['category'] == "Breaking Bad" %>
       <a href="/breaking"><p>Serie de origen: Breaking Bad</p></a>
 
     <% else %>
       <a href="/better"><p>Serie de origen: Better Call Saul</p></a>
-      <p>Temporadas en las que aparece</p>
     <% end %>
-    <h3>Temporadas de Breaking Bad en las que aparece</h3>
+    <h3><i class="fas fa-tv"></i> Temporadas de Breaking Bad en las que aparece</h3>
     <% if @character['appearance'].length() > 0 %>
       <% @character['appearance'].each do |ap| %>
         <a href="/breaking/<%= ap %>"><p>Temporada - <%= ap %></p></a>
@@ -28,7 +27,7 @@
     <% else %>
       <p>Este personaje no ha aparecido en Breaking Bad </p>
     <% end %>
-    <h3>Temporadas de Better Call Saul en las que aparece</p>
+    <h3><i class="fas fa-tv"></i> Temporadas de Better Call Saul en las que aparece</p>
     <% if @character['better_call_saul_appearance'].length() > 0 %>
       <%  @character['better_call_saul_appearance'].each do |ap| %>
         <a href="/better/<%= ap %>"><p>Temporada - <%= ap %></p></a>
@@ -38,7 +37,7 @@
     <% end %>
 
     <% if @quotes.length() > 0 %>
-      <h3>Frases:</h3>
+      <h3><i class="fas fa-quote-right"></i> Frases:</h3>
       <% @quotes.each do |quote| %>
         <p><%= quote['quote'] %></p>
       <% end %>
